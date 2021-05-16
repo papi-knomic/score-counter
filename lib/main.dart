@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:score_keeper/screens/bball.dart';
 import 'package:score_keeper/screens/football.dart';
+import 'package:score_keeper/screens/history.dart';
 
 void main() => runApp(MaterialApp(
       home: ScoreKeeper(),
-      theme: ThemeData(fontFamily: 'Poppins'),
+      theme: ThemeData(
+          fontFamily: 'Poppins',
+          appBarTheme: AppBarTheme(backgroundColor: Colors.black)),
     ));
 
 class ScoreKeeper extends StatefulWidget {
@@ -20,8 +23,13 @@ class _ScoreKeeperState extends State<ScoreKeeper> {
       appBar: AppBar(
         centerTitle: true,
         title: Text('Score Counter'),
-        backgroundColor: Colors.black,
-        leading: Icon(Icons.history),
+        leading: IconButton(
+            icon: Icon(Icons.history),
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                return History();
+              }));
+            }),
       ),
       body: IndexedStack(
         children: [Basketball(), Football()],

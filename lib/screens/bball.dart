@@ -10,6 +10,16 @@ class Basketball extends StatefulWidget {
 class _BasketballState extends State<Basketball> {
   int team1 = 0;
   int team2 = 0;
+
+  int ft1 = 0;
+  int ft2 = 0;
+
+  int two1 = 0;
+  int two2 = 0;
+
+  int three1 = 0;
+  int three2 = 0;
+
   String winner = '';
   String teamname1 = '';
   String teamname2 = '';
@@ -20,7 +30,7 @@ class _BasketballState extends State<Basketball> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Column(
           children: [
             ExpansionTile(
@@ -54,6 +64,60 @@ class _BasketballState extends State<Basketball> {
                 ),
               ],
             ),
+            ExpansionTile(
+              title: Text('Stats'),
+              leading: Icon(Icons.stacked_bar_chart),
+              children: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Text(
+                      '$ft1',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    ),
+                    Text('Free Throws'),
+                    Text(
+                      '$ft2',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Text(
+                      '$two1',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    ),
+                    Text('Two Points'),
+                    Text(
+                      '$two2',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    )
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: <Widget>[
+                    Text(
+                      '$three1',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    ),
+                    Text('Three Points'),
+                    Text(
+                      '$three2',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    )
+                  ],
+                ),
+              ],
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
@@ -62,10 +126,10 @@ class _BasketballState extends State<Basketball> {
                     Text(
                       '$team1',
                       style:
-                          TextStyle(fontSize: 70, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     Text(
                       teamname1,
@@ -73,7 +137,7 @@ class _BasketballState extends State<Basketball> {
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     FlatButton(
                         color: Colors.blue,
@@ -84,6 +148,7 @@ class _BasketballState extends State<Basketball> {
                         onPressed: () {
                           setState(() {
                             team1 = team1 + 1;
+                            ft1 = ft1 + 1;
                             winner = '';
                           });
                         },
@@ -106,6 +171,7 @@ class _BasketballState extends State<Basketball> {
                         onPressed: () {
                           setState(() {
                             team1 = team1 + 2;
+                            two1 = two1 + 1;
                             winner = '';
                           });
                         },
@@ -128,6 +194,7 @@ class _BasketballState extends State<Basketball> {
                         onPressed: () {
                           setState(() {
                             team1 = team1 + 3;
+                            three1 = three1 + 1;
                             winner = '';
                           });
                         },
@@ -145,10 +212,10 @@ class _BasketballState extends State<Basketball> {
                     Text(
                       '$team2',
                       style:
-                          TextStyle(fontSize: 70, fontWeight: FontWeight.bold),
+                          TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     Text(
                       teamname2,
@@ -156,7 +223,7 @@ class _BasketballState extends State<Basketball> {
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     FlatButton(
                         color: Colors.red,
@@ -167,6 +234,7 @@ class _BasketballState extends State<Basketball> {
                         onPressed: () {
                           setState(() {
                             team2 = team2 + 1;
+                            ft2 = ft2 + 1;
                             winner = '';
                           });
                         },
@@ -189,6 +257,7 @@ class _BasketballState extends State<Basketball> {
                         onPressed: () {
                           setState(() {
                             team2 = team2 + 2;
+                            two2 = two2 + 1;
                             winner = '';
                           });
                         },
@@ -211,6 +280,7 @@ class _BasketballState extends State<Basketball> {
                         onPressed: () {
                           setState(() {
                             team2 = team2 + 3;
+                            three2 = three2 + 1;
                             winner = '';
                           });
                         },
@@ -226,7 +296,7 @@ class _BasketballState extends State<Basketball> {
               ],
             ),
             SizedBox(
-              height: 30,
+              height: 20,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -249,6 +319,12 @@ class _BasketballState extends State<Basketball> {
                         control2.clear();
                         teamname1 = '';
                         teamname2 = '';
+                        ft1 = 0;
+                        ft2 = 0;
+                        three1 = 0;
+                        three2 = 0;
+                        two1 = 0;
+                        two2 = 0;
                       });
                     },
                     label: Text(
