@@ -21,6 +21,7 @@ class _ScoreKeeperState extends State<ScoreKeeper> {
         centerTitle: true,
         title: Text('Score Counter'),
         backgroundColor: Colors.black,
+        leading: Icon(Icons.history),
       ),
       body: IndexedStack(
         children: [Basketball(), Football()],
